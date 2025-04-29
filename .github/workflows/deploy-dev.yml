@@ -20,7 +20,8 @@ jobs:
       - name: Extract version
         id: meta
         run: |
-          VERSION=$(grep -m1 'version' build.gradle | sed -E 's/.*version\s*=\s*["\']([^"\']+)["\'].*/\1/')
+          # " : version = '0.0.1' : 형식으로 되어있음
+          VERSION=$(grep -m1 "version = '" build.gradle | cut -d"'" -f2)
           echo "version=$VERSION" >> $GITHUB_OUTPUT
 
       - name: Log in to Docker Hub
