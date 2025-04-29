@@ -1,0 +1,1 @@
+org.springframework.boot.env.EnvironmentPostProcessor=com.dundun213.kkobak.KKOBAKServer.Util.DockerSecretProcessor
