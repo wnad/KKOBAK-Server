@@ -6,22 +6,22 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class AppConfig {
 
-    @Value("${DB_HOST}")
+    @Value("${KKOBAK_DB_HOST}")
     private String dbHost;
 
-    @Value("${DB_PORT}")
+    @Value("${KKOBAK_DB_PORT}")
     private String dbPort;
 
-    @Value("${DB_USERNAME}")
+    @Value("${KKOBAK_DB_USERNAME}")
     private String dbUsername;
 
-    @Value("${DB_PASSWORD}")
+    @Value("${KKOBAK_DB_PASSWORD}")
     private String dbPassword;
 
-//    @Value("${JWT_SECRET}")
-//    private String jwtSecret;
+    @Value("${KKOBAK_JWT_SECRET_KEY}")
+    private String jwtSecret;
 
-    @Value("${GOOGLE_CLIENT_ID}")
+    @Value("${KKOBAK_GOOGLE_CLIENT_ID}")
     private String googleClientId;
 
     // Getter and Setter methods
