@@ -15,8 +15,8 @@ spring:
 
 jwt:
   secret: ${KKOBAK_JWT_SECRET_KEY}
-  issuer: ${KKOBAK_JWT_ISSUER} #kkobak
-  expiration: ${KKOBAK_JWT_EXPIRATION}  # 24h
+  issuer: ${KKOBAK_JWT_ISSUER}
+  expiration: ${KKOBAK_JWT_EXPIRATION}
 
 #google:
 #  clientId: ${KKOBAK_GOOGLE_CLIENT_ID}
