@@ -9,22 +9,21 @@ spring:
   config:
     activate:
       on-profile: dev
+      
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://${KKOBAK_DB_HOST}:${KKOBAK_DB_PORT}/${KKOBAK_DB_NAME}?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Seoul&characterEncoding=UTF-8
     username: ${KKOBAK_DB_USERNAME}
     password: ${KKOBAK_DB_PASSWORD}
-    hikari:
-      maximum-pool-size: 10
-      minimum-idle: 5
-      connection-timeout: 30000
-      idle-timeout: 600000
-      max-lifetime: 1800000
+
   jpa:
-    database-platform: org.hibernate.dialect.MySQLDialect
     hibernate:
       ddl-auto: update
     show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        
   security:
     user:
       name: ${KKOBAK_SECURITY_NAME}
@@ -35,4 +34,11 @@ jwt:
   secret: ${KKOBAK_JWT_SECRET_KEY}
   issuer: ${KKOBAK_JWT_ISSUER}
   expiration: ${KKOBAK_JWT_EXPIRATION}
+
+logging:
+  level:
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+    com.zaxxer.hikari: DEBUG
+    org.springframework.jdbc.core: TRACE
 
