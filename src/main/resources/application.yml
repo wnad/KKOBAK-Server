@@ -10,9 +10,9 @@ spring:
     activate:
       on-profile: dev
   datasource:
-    url: jdbc:mysql://${DB_HOST}:${DB_PORT}/${DB_NAME}?useSSL=false&serverTimezone=Asia/Seoul
-    username: ${DB_USERNAME}
-    password: ${MYSQL_PASSWORD}
+    url: jdbc:mysql://${KKOBAK_DB_HOST}:${KKOBAK_DB_PORT}/${KKOBAK_DB_NAME}?useSSL=false&serverTimezone=Asia/Seoul
+    username: ${KKOBAK_DB_USERNAME}
+    password: ${KKOBAK_DB_PASSWORD}
   jpa:
     hibernate:
       ddl-auto: update
@@ -22,9 +22,9 @@ spring:
         format_sql: true
 
 jwt:
-  secret: ${JWT_SECRET}
-  issuer: KKOBAK-Server
-  expiration: 86400  # 24시간
+  secret: ${KKOBAK_JWT_SECRET_KEY}
+  issuer: ${KKOBAK_JWT_ISSUER}
+  expiration: ${KKOBAK_JWT_EXPIRATION}
 
 ---
 spring:
@@ -32,15 +32,15 @@ spring:
     activate:
       on-profile: prod
   datasource:
-    url: jdbc:mysql://${MYSQL_HOST}:${MYSQL_PORT}/${MYSQL_DATABASE}
-    username: ${MYSQL_USERNAME}
-    password: ${MYSQL_PASSWORD}
+    url: jdbc:mysql://${KKOBAK_DB_HOST}:${KKOBAK_DB_PORT}/${KKOBAK_DB_NAME}
+    username: ${KKOBAK_DB_USERNAME}
+    password: ${KKOBAK_DB_PASSWORD}
   jpa:
     hibernate:
       ddl-auto: validate
     show-sql: false
 
 jwt:
-  secret: ${JWT_SECRET}
-  issuer: KKOBAK-Server
-  expiration: 86400  # 24시간 
+  secret: ${KKOBAK_JWT_SECRET_KEY}
+  issuer: ${KKOBAK_JWT_ISSUER}
+  expiration: ${KKOBAK_JWT_EXPIRATION}
