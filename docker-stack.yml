@@ -1,0 +1,78 @@
+services:
+  kkobak-frontend:
+    image: choswan/kkobak-frontend:latest
+    secrets:
+      - KKOBAK_REACT_APP_GOOGLE_AUTH_CLIENT_ID
+    entrypoint: /entrypoint.sh
+    ports:
+      - "3100:80"
+    networks:
+      - s510un
+    deploy:
+      replicas: 2
+      update_config:
+        parallelism: 1
+        delay: 10s
+      restart_policy:
+        condition: on-failure
+
+  kkobak-backend:
+    image: choswan/kkobak-backend:latest
+    secrets:
+      - KKOBAK_DB_HOST
+      - KKOBAK_DB_PORT
+      - KKOBAK_DB_NAME
+      - KKOBAK_DB_USERNAME
+      - KKOBAK_DB_PASSWORD
+      - KKOBAK_JWT_SECRET_KEY
+      - KKOBAK_JWT_ISSUER
+      - KKOBAK_JWT_EXPIRATION
+      - KKOBAK_SECURITY_NAME
+      - KKOBAK_SECURITY_PASSWORD
+      - KKOBAK_GOOGLE_CLIENT_ID
+    entrypoint: /app/entrypoint.sh
+    ports:
+      - "8180:8080"
+    networks:
+      - s510un
+    deploy:
+      replicas: 1
+      update_config:
+        parallelism: 1
+        delay: 10s
+      restart_policy:
+        condition: on-failure
+
+
+secrets:
+  ## 리액트 사용
+  KKOBAK_REACT_APP_GOOGLE_AUTH_CLIENT_ID:
+    external: true
+
+  ## 스프링 사용
+  KKOBAK_DB_HOST:
+    external: true
+  KKOBAK_DB_PORT:
+    external: true
+  KKOBAK_DB_NAME:
+    external: true
+  KKOBAK_DB_USERNAME:
+    external: true
+  KKOBAK_DB_PASSWORD:
+    external: true
+  KKOBAK_JWT_SECRET_KEY:
+    external: true
+  KKOBAK_JWT_ISSUER:
+    external: true
+  KKOBAK_JWT_EXPIRATION:
+    external: true
+  KKOBAK_SECURITY_NAME:
+    external: true
+  KKOBAK_SECURITY_PASSWORD:
+    external: true
+  KKOBAK_GOOGLE_CLIENT_ID:
+    external: true
+
+networks:
+  s510un:
+    external: true 

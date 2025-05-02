@@ -35,15 +35,12 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                     // 공개 API
                     .requestMatchers(
-                        "/",
-                        "/login",
-                        "/api/auth/**",
-                        "/api/public/**",
-                        "/swagger-ui/**",
-                        "/v3/api-docs/**"
+                        "/public/**"
                     ).permitAll()
                     // 관리자 API
-                    .requestMatchers("/api/admin/**").hasRole("ADMIN")
+                    .requestMatchers(
+                        "/swagger-ui/**"
+                    ).authenticated()
                     // 인증된 사용자만 접근 가능
                     .anyRequest().authenticated()
                 )

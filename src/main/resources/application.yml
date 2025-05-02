@@ -42,9 +42,6 @@ logging:
     com.zaxxer.hikari: DEBUG
     org.springframework.jdbc.core: TRACE
 
-docker-secret:
-  bind-path: /run/secrets
-
 #google:
 #  client:
 #    id: ${KKOBAK_GOOGLE_CLIENT_ID_FILE:/run/secrets/KKOBAK_GOOGLE_CLIENT_ID}
